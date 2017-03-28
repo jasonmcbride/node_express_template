@@ -1,13 +1,13 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const routes = require('./routes');
 
 app.use('/static', express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
-app.get('/', function(req, res) {
-    res.render("index");
-});
+// connect all routes to our application
+app.use('/', routes);
 
 app.listen(3000, function() {
     console.log('App is running on port 3000');
